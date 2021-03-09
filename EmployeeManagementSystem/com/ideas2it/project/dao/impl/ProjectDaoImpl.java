@@ -27,7 +27,7 @@ public class ProjectDaoImpl implements ProjectDao {
      * {@inheritdoc}
      */   
     @Override
-    public int addProjectDetails(Project project) { 
+    public int addProject(Project project) { 
         try {
             DatabaseConnection databaseConnection = 
                     DatabaseConnection.getInstance();
@@ -62,7 +62,7 @@ public class ProjectDaoImpl implements ProjectDao {
      * {@inheritdoc}
      */
     @Override
-    public boolean updateProjectName(int projectId, Project project) {
+    public boolean updateProject(int projectId, Project project) {
         try {			
             DatabaseConnection databaseConnection = 
                     DatabaseConnection.getInstance();
@@ -89,135 +89,7 @@ public class ProjectDaoImpl implements ProjectDao {
         }    
         return false;
 	}
-     
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateProjectType(int projectId, Project project) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE project SET projectname = ?, projecttype = ?," 
-                    + "projectmanager = ?, projectassigndate = ?,"
-                    + "projectlastdate = ? WHERE projectid = ?");
-            preparedStatement.setString(1, project.getProjectName());
-            preparedStatement.setString(2, project.getProjectType());
-            preparedStatement.setString(3, project.getProjectManager());
-            preparedStatement.setDate(4, project.getProjectAssignDate());
-            preparedStatement.setDate(5, project.getProjectLastDate());
-            preparedStatement.setInt(6, projectId);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace(); 
-        }    
-        return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateProjectManager(int projectId, Project project) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE project SET projectname = ?, projecttype = ?, " 
-                    + "projectmanager = ?, projectassigndate = ?,"
-                    + "projectlastdate = ? WHERE projectid = ?");
-            preparedStatement.setString(1, project.getProjectName());
-            preparedStatement.setString(2, project.getProjectType());
-            preparedStatement.setString(3, project.getProjectManager());
-            preparedStatement.setDate(4, project.getProjectAssignDate());
-            preparedStatement.setDate(5, project.getProjectLastDate());
-            preparedStatement.setInt(6,projectId);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace(); 
-        }    
-        return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateProjectAssignDate(int projectId, Project project) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE project SET projectname = ?, projecttype = ?," 
-                    + "projectmanager = ?, projectassigndate = ?,"
-                    + "projectlastdate = ? WHERE projectid = ?");
-            preparedStatement.setString(1, project.getProjectName());
-            preparedStatement.setString(2, project.getProjectType());
-            preparedStatement.setString(3, project.getProjectManager());
-            preparedStatement.setDate(4, project.getProjectAssignDate());
-            preparedStatement.setDate(5, project.getProjectLastDate());
-            preparedStatement.setInt(6,projectId);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace(); 
-        }    
-        return false;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateProjectLastDate(int projectId, Project project) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE project SET projectname = ?, projecttype = ?," 
-                    + "projectmanager = ?, projectassigndate = ?,"
-                    + "projectlastdate = ? WHERE projectid = ?");
-            preparedStatement.setString(1, project.getProjectName());
-            preparedStatement.setString(2, project.getProjectType());
-            preparedStatement.setString(3, project.getProjectManager());
-            preparedStatement.setDate(4, project.getProjectAssignDate());
-            preparedStatement.setDate(5, project.getProjectLastDate());
-            preparedStatement.setInt(6,projectId);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace(); 
-        }    
-        return false;
-    }     
-	
+         	
     /**
      * {@inheritdoc}
      */ 

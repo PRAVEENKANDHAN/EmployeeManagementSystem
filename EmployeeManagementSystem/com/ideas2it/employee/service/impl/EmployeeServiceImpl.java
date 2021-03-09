@@ -50,7 +50,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateName(int employeeId, String name) {
         Employee employee = employeeDao.getEmployeeDetail(employeeId);
         employee.setName(name);
-        return employeeDao.updateName(employeeId, employee);
+        return employeeDao.updateEmployee(employeeId, employee);
     }
 
     /**
@@ -60,7 +60,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateEmailId(int employeeId, String emailId) {
         Employee employee = employeeDao.getEmployeeDetail(employeeId);
         employee.setEmailId(emailId);
-        return employeeDao.updateEmailId(employeeId, employee);
+        return employeeDao.updateEmployee(employeeId, employee);
     }
 
     /**
@@ -70,7 +70,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateMobileNumber(int employeeId, long mobileNumber) {
         Employee employee = employeeDao.getEmployeeDetail(employeeId);
         employee.setMobileNumber(mobileNumber);
-        return employeeDao.updateMobileNumber(employeeId, employee);
+        return employeeDao.updateEmployee(employeeId, employee);
     }
 
     /**
@@ -80,7 +80,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateCity(int employeeId, String city) {
         Employee employee = employeeDao.getEmployeeDetail(employeeId);
         employee.setCity(city);
-        return employeeDao.updateCity(employeeId, employee);
+        return employeeDao.updateEmployee(employeeId, employee);
     }
 
     /**
@@ -90,7 +90,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public boolean updateDateOfBirth(int employeeId, Date dateOfBirth) {
         Employee employee = employeeDao.getEmployeeDetail(employeeId);
         employee.setDateOfBirth(dateOfBirth);
-        return employeeDao.updateDateOfBirth(employeeId, employee); 
+        return employeeDao.updateEmployee(employeeId, employee); 
     } 
     
     /**
@@ -100,7 +100,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             String addressMode) {
         Address address = employeeDao.getAddressDetail(employeeId);
         address.setDoorNumber(doorNumber);
-        return employeeDao.updateDoorNumber(employeeId, address, addressMode);
+        return employeeDao.updateAddress(employeeId, address);
     } 
 	
     /**
@@ -110,7 +110,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             String addressMode) {
         Address address = employeeDao.getAddressDetail(employeeId);
         address.setStreetName(streetName);
-        return employeeDao.updateStreetName(employeeId, address, addressMode);
+        return employeeDao.updateAddress(employeeId, address);
     }
 	
     /**
@@ -120,7 +120,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             String addressMode) {
         Address address = employeeDao.getAddressDetail(employeeId);
         address.setDistrict(district);
-        return employeeDao.updateDistrict(employeeId, address, addressMode);
+        return employeeDao.updateAddress(employeeId, address);
     }
 	
     /**
@@ -130,7 +130,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             String addressMode) {
         Address address = employeeDao.getAddressDetail(employeeId);
         address.setState(state);
-        return employeeDao.updateState(employeeId, address, addressMode);
+        return employeeDao.updateAddress(employeeId, address);
     }
 	
     /**
@@ -140,9 +140,9 @@ public class EmployeeServiceImpl implements EmployeeService {
             String addressMode) {
         Address address = employeeDao.getAddressDetail(employeeId);
         address.setCountry(country);
-        return employeeDao.updateCountry(employeeId, address, addressMode);
+        return employeeDao.updateAddress(employeeId, address);
     }	
-	
+		  	
     /**
      * {@inheritdoc}
      */

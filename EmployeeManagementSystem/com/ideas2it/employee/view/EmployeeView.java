@@ -132,61 +132,106 @@ public class EmployeeView {
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                System.out.println("Enter a name:");
-                scanner.nextLine();
-                String name = scanner.nextLine();
-                if (employeeController.updateName(employeeId, name)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateName(employeeId);
                 break;
             case 2: 
-                System.out.println("Enter a emailid:");
-                scanner.nextLine();
-                String emailId = scanner.nextLine();
-                if (employeeController.updateEmailId(employeeId, 
-                    emailId)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateEmailId(employeeId);
                 break;            
             case 3: 
-                System.out.println("Enter a mobileno:");
-                long mobileNumber = scanner.nextLong();
-                scanner.nextLine();
-                if (employeeController.updateMobileNumber(employeeId,
-                        mobileNumber)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateMobileNumber(employeeId);
                 break; 
             case 4: 
-                System.out.println("Enter a city:");
-                scanner.nextLine();
-                String city = scanner.nextLine();
-                if (employeeController.updateCity(employeeId, city)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateCity(employeeId);
                 break;
             case 5: 
-                System.out.println("Enter a dateOfBirth(yyyy-MM-dd)");
-                scanner.nextLine();
-                Date dateOfBirth = Date.valueOf(scanner.nextLine());
-                if (employeeController.updateDateOfBirth(employeeId,
-                    dateOfBirth)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateDateOfBirth(employeeId);
                 break; 
             default: 
                 System.out.println("Please enter right choice");                
                 break;
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     */ 
+    public void updateName(int employeeId) {
+        System.out.println("Enter a name:");
+        scanner.nextLine();
+        String name = scanner.nextLine();
+        if (employeeController.updateName(employeeId, name)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    } 
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     */
+    public void updateEmailId(int employeeId) {
+        System.out.println("Enter a emailid:");
+        scanner.nextLine();
+        String emailId = scanner.nextLine();
+        if (employeeController.updateEmailId(employeeId, 
+                emailId)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     */
+    public void updateMobileNumber(int employeeId) {
+        System.out.println("Enter a mobileno:");
+        long mobileNumber = scanner.nextLong();
+        scanner.nextLine();
+        if (employeeController.updateMobileNumber(employeeId,
+                mobileNumber)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     */    
+    public void updateCity(int employeeId) {
+        System.out.println("Enter a city:");
+        scanner.nextLine();
+        String city = scanner.nextLine();
+        if (employeeController.updateCity(employeeId, city)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+     
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     */      
+    public void updateDateOfBirth(int employeeId) {
+        System.out.println("Enter a dateOfBirth(yyyy-MM-dd)");
+        scanner.nextLine();
+        Date dateOfBirth = Date.valueOf(scanner.nextLine());
+        if (employeeController.updateDateOfBirth(employeeId,
+                dateOfBirth)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
         }
     }
     
@@ -204,64 +249,114 @@ public class EmployeeView {
         int choice = scanner.nextInt();
         switch (choice) {		
             case 1: 
-                System.out.println("Enter a doorNumber:");
-                scanner.nextLine();
-                String doorNumber = scanner.nextLine();
-                if (employeeController.updateDoorNumber(employeeId, 
-                        doorNumber, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateDoorNumber(employeeId, addressMode);
                 break;
             case 2: 
-                System.out.println("Enter a streetName:");
-                scanner.nextLine();
-                String streetName = scanner.nextLine();
-                if (employeeController.updateStreetName(employeeId,
-                        streetName, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateStreetName(employeeId, addressMode);
                 break;
             case 3: 
-                System.out.println("Enter a district:");
-                scanner.nextLine();
-                String district = scanner.nextLine();
-                if (employeeController.updateDistrict(employeeId, 
-                        district, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateDistrict(employeeId, addressMode);
                 break;
             case 4: 
-                System.out.println("Enter a state:");
-                scanner.nextLine();
-                String state = scanner.nextLine();
-                if (employeeController.updateState(employeeId, state, 
-                        addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateState(employeeId, addressMode);
                 break;
             case 5: 
-                System.out.println("Enter a country:");
-                scanner.nextLine();
-                String country = scanner.nextLine();
-                if (employeeController.updateCountry(employeeId, country, 
-                        addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateCountry(employeeId, addressMode);
                 break;
             default: 
                 System.out.println("Please enter right choice");                
                 break;
         }          
+    }
+
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     * @param addressMode it contains a permanent address
+     */
+    public void updateDoorNumber(int employeeId, String addressMode) {
+        System.out.println("Enter a doorNumber:");
+        scanner.nextLine();
+        String doorNumber = scanner.nextLine();
+        if (employeeController.updateDoorNumber(employeeId, 
+                doorNumber, addressMode)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }            
+
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     * @param addressMode it contains a permanent address
+     */
+    public void updateStreetName(int employeeId, String addressMode) {
+        System.out.println("Enter a streetName:");
+        scanner.nextLine();
+        String streetName = scanner.nextLine();
+        if (employeeController.updateStreetName(employeeId,
+                streetName, addressMode)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     * @param addressMode it contains a permanent address
+     */
+    public void updateDistrict(int employeeId, String addressMode) {
+        System.out.println("Enter a district:");
+        scanner.nextLine();
+        String district = scanner.nextLine();
+        if (employeeController.updateDistrict(employeeId, 
+                district, addressMode)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     * @param addressMode it contains a permanent address
+     */  
+    public void updateState(int employeeId, String addressMode) {
+        System.out.println("Enter a state:");
+        scanner.nextLine();
+        String state = scanner.nextLine();
+        if (employeeController.updateState(employeeId, state, 
+                addressMode)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given employee id
+     * @param employeeId it contains an employeeId
+     * @param addressMode it contains a permanent address
+     */
+    public void updateCountry(int employeeId, String addressMode) {
+        System.out.println("Enter a country:");
+        scanner.nextLine();
+        String country = scanner.nextLine();
+        if (employeeController.updateCountry(employeeId, country, 
+                addressMode)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
     }
 
     /**
@@ -277,67 +372,27 @@ public class EmployeeView {
         System.out.print(option);
         int choice = scanner.nextInt();
         switch (choice) {		
-        case 1: 
-                System.out.println("Enter a doorNumber:");
-                scanner.nextLine();
-                String doorNumber = scanner.nextLine();
-                if (employeeController.updateDoorNumber(employeeId, 
-                        doorNumber, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+            case 1: 
+                updateDoorNumber(employeeId, addressMode);
                 break;
-        case 2: 
-                System.out.println("Enter a streetName:");
-                scanner.nextLine();
-                String streetName = scanner.nextLine();
-                if (employeeController.updateStreetName(employeeId,
-                        streetName, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+            case 2: 
+                updateStreetName(employeeId, addressMode);
                 break;
-        case 3: 
-                System.out.println("Enter a district:");
-                scanner.nextLine();
-                String district = scanner.nextLine();
-                if (employeeController.updateDistrict(employeeId, 
-                        district, addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+            case 3: 
+                updateDistrict(employeeId, addressMode);
                 break;
-        case 4: 
-                System.out.println("Enter a state:");
-                scanner.nextLine();
-                String state = scanner.nextLine();
-                if (employeeController.updateState(employeeId, state, 
-                        addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+            case 4: 
+                updateState(employeeId, addressMode);
                 break;
-        case 5: 
-                System.out.println("Enter a country:");
-                scanner.nextLine();
-                String country = scanner.nextLine();
-                if (employeeController.updateCountry(employeeId, country,
-                        addressMode)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+            case 5: 
+                updateCountry(employeeId, addressMode);
                 break;
-        default: 
+            default: 
                 System.out.println("Please enter right choice");                
                 break;
         }          
     }
-	
+    	
     /**
      * Deleting the employee details based on the given
      * employeedId

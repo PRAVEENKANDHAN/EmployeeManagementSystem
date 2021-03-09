@@ -27,10 +27,10 @@ public class ProjectController {
      * @return 1 if project details added successfully
      *         else 0 if project details added failed
      */
-    public int addProjectDetails(String projectName, String projectType, 
+    public int addProject(String projectName, String projectType, 
             String projectManager, Date projectAssignDate, 
             Date projectLastDate) {
-        return projectService.addProjectDetails(projectName, projectType, 
+        return projectService.addProject(projectName, projectType, 
             projectManager, projectAssignDate, projectLastDate);
     }
 	

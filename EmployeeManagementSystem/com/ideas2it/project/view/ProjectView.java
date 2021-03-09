@@ -35,7 +35,7 @@ public class ProjectView {
             scanner.nextLine();
             switch (choice) {
                 case 1: 
-                    addProjectDetails();
+                    addProject();
                     break;
                 case 2: 
                     updateProjectDetails(getProjectId());
@@ -53,7 +53,8 @@ public class ProjectView {
                     System.out.print("Thank you!");
                     break;
                 default: 
-                    System.out.print("\nPlease enter right choice!\nThank you");
+                    System.out.print("\nPlease enter right choice!"
+                            + "\nThank you");
                     choice = 5;
                     break; 
             }
@@ -63,7 +64,7 @@ public class ProjectView {
     /**
      * This method adds a project details in a project database
      */
-    public void addProjectDetails() {
+    public void addProject() {
         String projectName, projectManager, projectType;
         int  projectId;
         Date projectAssignDate, projectLastDate;		
@@ -78,7 +79,7 @@ public class ProjectView {
         projectAssignDate = Date.valueOf(isValidDate());
         System.out.println("Enter Project Last Date(yyyy-MM-dd)");
         projectLastDate = Date.valueOf(isValidDate());
-        int id = projectController.addProjectDetails(projectName, projectType, 
+        int id = projectController.addProject(projectName, projectType, 
                 projectManager, projectAssignDate, projectLastDate);
         if (0 != id ) {
             System.out.println("Project Details added successfully\n" 
@@ -102,66 +103,106 @@ public class ProjectView {
         int choice = scanner.nextInt();
         switch (choice) {
             case 1:
-                System.out.println("Enter a Project name:");
-                scanner.nextLine();
-                String projectName = scanner.nextLine();
-                if (projectController.updateProjectName(projectId, 
-                        projectName)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateProjectName(projectId);
                 break;
             case 2: 
-                System.out.println("Enter a Project Type:");
-                scanner.nextLine();
-                String projectType = scanner.nextLine();
-                if (projectController.updateProjectType(projectId, 
-                    projectType)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateProjectType(projectId);
                 break;            
             case 3: 
-                System.out.println("Enter a Project Manager Name:");
-                String projectManager = scanner.nextLine();
-                scanner.nextLine();
-                if (projectController.updateProjectManager(projectId,
-                        projectManager)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateProjectManagerName(projectId);
                 break; 
             case 4: 
-                System.out.println("Enter a project Starting Date:");
-                scanner.nextLine();
-                Date projectAssignDate = Date.valueOf(scanner.nextLine());
-                if (projectController.updateProjectAssignDate(projectId,
-                        projectAssignDate)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateProjectAssignDate(projectId);
                 break;
             case 5: 
-                System.out.println("Enter a project Ending Date:");
-                scanner.nextLine();
-                Date projectLastDate = Date.valueOf(scanner.nextLine());
-                if (projectController.updateProjectLastDate(projectId,
-                        projectLastDate)) {
-                    System.out.println("Updated Successfully");
-                } else {
-                    System.out.println("Updation Failed");
-                }
+                updateProjectLastDate(projectId);
                 break;
             default: 
                 System.out.println("Please enter right choice");                
                 break;
         }
     }
-    	
+    
+    /**
+     * Update the existing data based on
+     * the given project id
+     * @param projectId it contains an projectId
+     */
+    public void updateProjectName(int projectId) {        
+        System.out.println("Enter a Project name:");
+        scanner.nextLine();
+        String projectName = scanner.nextLine();
+        if (projectController.updateProjectName(projectId, 
+                projectName)) {
+            System.out.println("Updated Successfully");
+        } else {
+        System.out.println("Updation Failed");
+        }
+    }
+    
+    public void updateProjectType(int projectId) {
+        System.out.println("Enter a Project Type:");
+        scanner.nextLine();
+        String projectType = scanner.nextLine();
+        if (projectController.updateProjectType(projectId, 
+                projectType)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+    
+    /**
+     * Update the existing data based on
+     * the given project id
+     * @param projectId it contains an projectId
+     */ 
+    public void updateProjectManagerName(int projectId) {
+        System.out.println("Enter a Project Manager Name:");
+        String projectManager = scanner.nextLine();
+        scanner.nextLine();
+        if (projectController.updateProjectManager(projectId,
+                projectManager)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+
+    /**
+     * Update the existing data based on
+     * the given project id
+     * @param projectId it contains an projectId
+     */
+    public void updateProjectAssignDate(int projectId) {
+        System.out.println("Enter a project Starting Date:");
+        scanner.nextLine();
+        Date projectAssignDate = Date.valueOf(scanner.nextLine());
+        if (projectController.updateProjectAssignDate(projectId,
+                projectAssignDate)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+   
+    /**
+     * Update the existing data based on
+     * the given project id
+     * @param projectId it contains an projectId
+     */
+    public void updateProjectLastDate(int projectId) {
+        System.out.println("Enter a project Ending Date:");
+        scanner.nextLine();
+        Date projectLastDate = Date.valueOf(scanner.nextLine());
+        if (projectController.updateProjectLastDate(projectId,
+                projectLastDate)) {
+            System.out.println("Updated Successfully");
+        } else {
+            System.out.println("Updation Failed");
+        }
+    }
+	
     /**
      * Deleting the project details based on the given
      * projectId

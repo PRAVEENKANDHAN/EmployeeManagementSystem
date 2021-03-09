@@ -96,7 +96,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
      * {@inheritdoc}
      */
     @Override
-    public boolean updateName(int id, Employee employee) {
+    public boolean updateEmployee(int id, Employee employee) {
         try {			
             DatabaseConnection databaseConnection = 
                     DatabaseConnection.getInstance();
@@ -123,144 +123,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }    
             return false;
 	}
-     
+    
     /**
      * {@inheritdoc}
      */
     @Override
-    public boolean updateEmailId(int id, Employee employee) {
-        try {
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE employee SET name = ?, emailid = ?," 
-                    + "mobilenumber = ?, city = ?, dateofbirth = ?"
-                    + "WHERE id = ?");
-            preparedStatement.setString(1, employee.getName());
-            preparedStatement.setString(2, employee.getEmailId());
-            preparedStatement.setLong(3, employee.getMobileNumber());
-            preparedStatement.setString(4, employee.getCity());
-            preparedStatement.setDate(5, employee.getDateOfBirth());
-            preparedStatement.setInt(6, id);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateMobileNumber(int id, Employee employee) {
-        try {
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE employee SET name = ?, emailid = ?," 
-                    + "mobilenumber = ?, city = ?, dateofbirth = ?"
-                    + "WHERE id = ?");
-            preparedStatement.setString(1, employee.getName());
-            preparedStatement.setString(2, employee.getEmailId());
-            preparedStatement.setLong(3, employee.getMobileNumber());
-            preparedStatement.setString(4, employee.getCity());
-            preparedStatement.setDate(5, employee.getDateOfBirth());
-            preparedStatement.setInt(6, id);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }   
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateCity(int id, Employee employee) {
-        try {
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE employee SET name = ?, emailid = ?," 
-                    + "mobilenumber = ?, city = ?, dateofbirth = ?"
-                    + "WHERE id = ?");
-            preparedStatement.setString(1, employee.getName());
-            preparedStatement.setString(2, employee.getEmailId());
-            preparedStatement.setLong(3, employee.getMobileNumber());
-            preparedStatement.setString(4, employee.getCity());
-            preparedStatement.setDate(5, employee.getDateOfBirth());
-            preparedStatement.setInt(6, id);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        } 
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateDateOfBirth(int id, Employee employee) {
-        try {
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE employee SET name = ?, emailid = ?," 
-                    + "mobilenumber = ?, city = ?, dateofbirth = ?"
-                    + "WHERE id = ?");
-            preparedStatement.setString(1, employee.getName());
-            preparedStatement.setString(2, employee.getEmailId());
-            preparedStatement.setLong(3, employee.getMobileNumber());
-            preparedStatement.setString(4, employee.getCity());
-            preparedStatement.setDate(5, employee.getDateOfBirth());
-            preparedStatement.setInt(6, id);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }   
-    }
-     
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateDoorNumber(int id, Address address,
-                String addressMode) {
+    public boolean updateAddress(int id, Address address) {
         try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
+            DatabaseConnection databaseConnection = DatabaseConnection.getInstance();
             Connection connection = databaseConnection.connectDatabase();
             PreparedStatement preparedStatement = connection.prepareStatement
                     ("UPDATE address SET doornumber = ?, streetname = ?," 
@@ -272,7 +142,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             preparedStatement.setString(4, address.getState());
             preparedStatement.setString(5, address.getCountry());
             preparedStatement.setInt(6, id);
-            preparedStatement.setString(7,addressMode);
+            preparedStatement.setString(7,address.getAddressMode());
             int row = preparedStatement.executeUpdate();
             if (1 == row) {
                 return true;
@@ -286,140 +156,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         }    
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateStreetName(int id, Address address, 
-            String addressMode) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE address SET doornumber = ?, streetname = ?," 
-                    + "district = ?, state = ?, country = ?"
-                    + "WHERE id = ? AND addressMode = ?");
-            preparedStatement.setString(1, address.getDoorNumber());
-            preparedStatement.setString(2, address.getStreetName());
-            preparedStatement.setString(3, address.getDistrict());
-            preparedStatement.setString(4, address.getState());
-            preparedStatement.setString(5, address.getCountry());
-            preparedStatement.setInt(6, id);
-            preparedStatement.setString(7,addressMode);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }  
-    }
-	
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateDistrict(int id, Address address, 
-            String addressMode) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE address SET doornumber = ?, streetname = ?," 
-                    + "district = ?, state = ?, country = ?"
-                    + "WHERE id = ? AND addressMode = ?");
-            preparedStatement.setString(1, address.getDoorNumber());
-            preparedStatement.setString(2, address.getStreetName());
-            preparedStatement.setString(3, address.getDistrict());
-            preparedStatement.setString(4, address.getState());
-            preparedStatement.setString(5, address.getCountry());
-            preparedStatement.setInt(6, id);
-            preparedStatement.setString(7,addressMode);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }    
-    }
-	
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateState(int id, Address address, String addressMode) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE address SET doornumber = ?, streetname = ?," 
-                    + "district = ?, state = ?, country = ?"
-                    + "WHERE id = ? AND addressMode = ?");
-            preparedStatement.setString(1, address.getDoorNumber());
-            preparedStatement.setString(2, address.getStreetName());
-            preparedStatement.setString(3, address.getDistrict());
-            preparedStatement.setString(4, address.getState());
-            preparedStatement.setString(5, address.getCountry());
-            preparedStatement.setInt(6, id);
-            preparedStatement.setString(7,addressMode);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }    
-    }
-	
-    /**
-     * {@inheritdoc}
-     */
-    @Override
-    public boolean updateCountry(int id, Address address, String addressMode) {
-        try {			
-            DatabaseConnection databaseConnection = 
-                    DatabaseConnection.getInstance();
-            Connection connection = databaseConnection.connectDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement
-                    ("UPDATE address SET doornumber = ?, streetname = ?," 
-                    + "district = ?, state = ?, country = ?"
-                    + "WHERE id = ? AND addressMode = ?");
-            preparedStatement.setString(1, address.getDoorNumber());
-            preparedStatement.setString(2, address.getStreetName());
-            preparedStatement.setString(3, address.getDistrict());
-            preparedStatement.setString(4, address.getState());
-            preparedStatement.setString(5, address.getCountry());
-            preparedStatement.setInt(6, id);
-            preparedStatement.setString(7,addressMode);
-            int row = preparedStatement.executeUpdate();
-            if (1 == row) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (SQLException e) {    
-            System.out.println("Connection failed");
-            e.printStackTrace();
-            return false;
-        }    
-    }
-    	
     /**
      * {@inheritdoc}
      */ 

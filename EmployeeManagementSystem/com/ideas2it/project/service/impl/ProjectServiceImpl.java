@@ -23,10 +23,10 @@ public class ProjectServiceImpl implements ProjectService {
      * {@inheritdoc}
      */   
     @Override
-    public int addProjectDetails(String projectName, String projectType, 
+    public int addProject(String projectName, String projectType, 
             String projectManager, Date projectAssignDate, 
             Date projectLastDate) {
-        return projectDao.addProjectDetails(new Project(projectName, 
+        return projectDao.addProject(new Project(projectName, 
                 projectType, projectManager, projectAssignDate, 
                 projectLastDate));
     }
@@ -38,7 +38,7 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean updateProjectName(int projectId, String projectName) {
         Project project = projectDao.getProjectDetail(projectId);
         project.setProjectName(projectName);
-        return projectDao.updateProjectName(projectId, project);
+        return projectDao.updateProject(projectId, project);
     }
 
     /**
@@ -48,7 +48,7 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean updateProjectType(int projectId, String projectType) {
         Project project = projectDao.getProjectDetail(projectId);
         project.setProjectType(projectType);
-        return projectDao.updateProjectType(projectId, project);
+        return projectDao.updateProject(projectId, project);
     }
 
     /**
@@ -58,7 +58,7 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean updateProjectManager(int projectId, String projectManager) {
         Project project = projectDao.getProjectDetail(projectId);
         project.setProjectManager(projectManager);
-        return projectDao.updateProjectManager(projectId, project);
+        return projectDao.updateProject(projectId, project);
     }
 
     /**
@@ -69,7 +69,7 @@ public class ProjectServiceImpl implements ProjectService {
             Date projectAssignDate) {
         Project project = projectDao.getProjectDetail(projectId);
         project.setProjectAssignDate(projectAssignDate);
-        return projectDao.updateProjectAssignDate(projectId, project);
+        return projectDao.updateProject(projectId, project);
     }
 
     /**
@@ -79,7 +79,7 @@ public class ProjectServiceImpl implements ProjectService {
     public boolean updateProjectLastDate(int projectId, Date projectLastDate) {
         Project project = projectDao.getProjectDetail(projectId);
         project.setProjectLastDate(projectLastDate);
-        return projectDao.updateProjectLastDate(projectId, project);
+        return projectDao.updateProject(projectId, project);
     }
     	
     /**
